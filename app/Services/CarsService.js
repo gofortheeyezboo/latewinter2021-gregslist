@@ -38,8 +38,10 @@ class CarsService{
     document.getElementById('jobs-hide').toggleAttribute('hidden')
 
     }
+    let carsElem = document.getElementById('cars-hide')
+    if(carsElem.hidden == true ){
     document.getElementById('cars-hide').toggleAttribute('hidden')
-    
+    }
   }
 }
 

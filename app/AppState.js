@@ -27,7 +27,12 @@ class AppState extends EventEmitter {
   jobTitle: 'Engineer',
   hours: 'full-time',
   rate: '$30 per hour',
-  description: 'You are going to be engineering stuff'})]
+  description: 'You are going to be engineering stuff'}), new Job({
+  company: 'Boise Code Works',
+  jobTitle: 'Instructor',
+  hours: 'full-time',
+  rate: '$100 per hour',
+  description: 'Teaching dummies how to code good and do other stuff good too'})]
 }
 
 export const ProxyState = new Proxy(new AppState(), {

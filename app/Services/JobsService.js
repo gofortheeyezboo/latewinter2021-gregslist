@@ -36,10 +36,25 @@ class JobsService{
     let carsElem = document.getElementById('cars-hide')
     if(carsElem.hidden == false){
     document.getElementById('cars-hide').toggleAttribute('hidden')
-
-    }
+    }    
+    let jobsElem = document.getElementById('jobs-hide')
+    if(jobsElem.hidden == true ){
     document.getElementById('jobs-hide').toggleAttribute('hidden')
-    
+    }
+  }
+  showAll(){
+    let housesElem = document.getElementById('houses-hide')
+    if(housesElem.hidden == true){
+    document.getElementById('houses-hide').toggleAttribute('hidden') 
+    }
+    let carsElem = document.getElementById('cars-hide')
+    if(carsElem.hidden == true){
+    document.getElementById('cars-hide').toggleAttribute('hidden')
+    }
+    let jobsElem = document.getElementById('jobs-hide')
+    if(jobsElem.hidden == true){
+    document.getElementById('jobs-hide').toggleAttribute('hidden')
+    }   
   }
 }
 

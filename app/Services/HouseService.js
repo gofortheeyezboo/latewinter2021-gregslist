@@ -36,7 +36,10 @@ class HouseService{
     if(jobsElem.hidden == false){
     document.getElementById('jobs-hide').toggleAttribute('hidden')
     }
+    let housesElem = document.getElementById('houses-hide')
+    if(housesElem.hidden == true ){
     document.getElementById('houses-hide').toggleAttribute('hidden')
+    }
     
   }
 }

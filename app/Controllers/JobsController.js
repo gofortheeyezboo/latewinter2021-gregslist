@@ -39,4 +39,7 @@ export default class JobsController{
   unHide(){
     jobsService.unHide()
   }
+  showAll(){
+    jobsService.showAll()
+  }
 }
