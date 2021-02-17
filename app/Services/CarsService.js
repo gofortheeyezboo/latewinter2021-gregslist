@@ -8,11 +8,7 @@ class CarsService{
     console.log("cars service");
   }
 
-  createCar(rawCar) {
-  //  let newCar = new Car(rawCar)
-  //  console.log(newCar)
-  //  ProxyState.cars = [...ProxyState.cars, newCar]
-
+  createCar(rawCar){
     let temp = ProxyState.cars
     temp.push(new Car(rawCar))
     ProxyState.cars = temp
@@ -31,6 +27,19 @@ class CarsService{
     let carIndex = temp.findIndex(car =>  car.id == id)
     temp.splice(carIndex, 1)
     ProxyState.cars = temp
+  }
+  unHide(){
+    let housesElem = document.getElementById('houses-hide')
+    if(housesElem.hidden == false){
+    document.getElementById('houses-hide').toggleAttribute('hidden') 
+    }
+    let jobsElem = document.getElementById('jobs-hide')
+    if(jobsElem.hidden == false){
+    document.getElementById('jobs-hide').toggleAttribute('hidden')
+
+    }
+    document.getElementById('cars-hide').toggleAttribute('hidden')
+    
   }
 }
 

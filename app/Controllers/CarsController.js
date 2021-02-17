@@ -4,16 +4,12 @@ import { carsService } from "../Services/CarsService.js"
   function _draw(){
     let cars = ProxyState.cars
     let template = ""
-    cars.forEach(car=> template += car.Template)
-    // console.log(template)
+    cars.forEach(c => template += c.Template)
     document.getElementById('cars').innerHTML = template
-    console.log(ProxyState.cars)
   }
 
 export default class CarsController{
   constructor(){
-    console.log("cars controller working")
-    console.log(ProxyState.cars)
     _draw()
     ProxyState.on("cars", _draw)
   }
@@ -37,13 +33,15 @@ export default class CarsController{
   }
 
   bid(id){
-    console.log('bidding ' + id)
     carsService.bid(id)
   }
 
   deleteCar(id){
-    console.log(id)
     carsService.deleteCar(id)
+  }
+
+  unHide(){
+    carsService.unHide()
   }
 
 }

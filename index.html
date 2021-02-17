@@ -14,17 +14,30 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-dark navbar-expand bg-dark text-light">
+        <nav class="navbar navbar-dark navbar-expand bg-dark text-light container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="assets/img/logo.png" width="45" height="45" alt="" loading="lazy">
                 <span class="ml-2">latewinter21-gregslist</span>
             </a>
+            <div class="row">
+                <div class="col">
+                    <button onclick="app.carsController.unHide()" class="btn-primary shadow">Cars</button>
+                </div>
+                <div class="col">
+                    <button onclick="app.houseController.unHide()" class="btn-primary shadow" >Houses</button>
+                </div>
+                <div class="col">
+                    <button onclick="app.jobsController.unHide()" class="btn-primary shadow">Jobs</button>
+                </div>
+            </div>
         </nav>
     </header>
-    <main class="container-fluid">
-        <div class="row">
+<main class="container-fluid">
+        <div class="row" id="cars-hide" hidden>
             <div class="col">
                 <h1>Cars</h1>
+                <div class="row">
+                    <div class="col">
                 <form class="form-inline" onsubmit="app.carsController.createCar(event)">
                     <div class="form-group">
                         <input type="text" name="make" id="make" class="form-control" placeholder="Make"
@@ -56,18 +69,90 @@
                     </div>
                     <button class="btn btn-info" type="submit">Create</button>
                 </form>
+                <div class="row pl-4" id="cars"></div>
+            </div>
             </div>
         </div>
-        <div class="row" id="cars">
+    </div>
 
-        </div>
         <hr>
-        <div class="row">
-            <div class="col">
+            <div class="row" hidden id="houses-hide">
+             <div class="col">
                 <h1>Houses</h1>
             </div>
+            <div class="row">
+                <div class="col">
+                    <form class="form-inline ml-3" onsubmit="app.houseController.createHouse(event)">
+                        <div class="form-group">
+                            <input type="text" name="bedrooms" id="bedrooms" class="form-control" placeholder="Bedrooms"
+                                aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="bathrooms" id="bathrooms" class="form-control" placeholder="Bathrooms"
+                                aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="year" id="year" class="form-control" placeholder="Year"
+                                aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="price" id="price" class="form-control" placeholder="Price"
+                                aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="description" id="description" class="form-control"
+                                placeholder="Description" aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="levels" id="levels" class="form-control" placeholder="Levels"
+                                aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="imgUrl" id="imgUrl" class="form-control" placeholder="ImgUrl"
+                                aria-describedby="helpId">
+                        </div>
+                        <button class="btn btn-info" type="submit">Create</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row pl-5" id="houses">
+            </div>
         </div>
-    </main>
+        <div class="row" id='jobs-hide' hidden>
+            <div class="col">
+                <hr>
+                <h1>Jobs</h1>
+                <div class="row">
+                    <div class="col">
+                    <form class="form-inline ml-1" onsubmit="app.jobsController.createJob(event)">
+                        <div class="form-group">
+                            <input type="text" name="company" id="company" class="form-control" placeholder="Company"
+                                aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="jobTitle" id="jobTitle" class="form-control" placeholder="Job Title"
+                                aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="hours" id="hours" class="form-control" placeholder="Hours"
+                                aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="rate" id="rate" class="form-control" placeholder="Rate"
+                                aria-describedby="helpId">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="description" id="description" class="form-control"
+                                placeholder="Description" aria-describedby="helpId">
+                        </div>                        
+                        <button class="btn btn-info" type="submit">Create</button>
+                    </form>
+                    <div class="row pl-5" id="jobs">
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
     <footer class="container-fluid bg-dark text-light">
         <div class="row text-center">
             <div class="col">

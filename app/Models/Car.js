@@ -18,9 +18,9 @@ get Template(){
   <img class="card-img-top" src="${this.imgUrl}" alt="">
   <div class="card-body">
       <h4 class="card-title">${this.year} ${this.make} - ${this.model}</h4>
-      <p class="card-text">${this.description}</p>
       <p>Miles : ${this.miles}</p>
       <p>Price: ${this.price}</p>
+      <p class="card-text">${this.description}</p>
       <button class="btn btn-success" onclick="app.carsController.bid('${this.id}')">Bid</button>
   </div>
 </div>`

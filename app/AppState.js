@@ -1,4 +1,6 @@
 import Car from "./Models/Car.js"
+import Job from "./Models/Jobs.js"
+import House from "./Models/House.js"
 import Value from "./Models/Value.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
@@ -9,6 +11,23 @@ class AppState extends EventEmitter {
   //NOTE adding a type to your collections with jsdocs gives additional intellisense when referencing that collection.
   /**@type {Car[]} */
   cars = [new Car({make: "Jeep", model: "Wrangler", price: 20, imgUrl: 'http://images.thetruthaboutcars.com/2011/11/Wrangler-front-quarter.jpg', year: 2012, description: "Its nice", miles: 75000}), new Car({make: "Jeep", model: "Rango", price: 1500, imgUrl: 'http://images.thetruthaboutcars.com/2011/11/Wrangler-front-quarter.jpg', year: 2012, description: "Its very nice", miles: 5000})]
+
+  /**@type {House[]} */
+  houses = [new House({bedrooms: 4,
+  bathrooms: 2,
+  levels: 2,
+  imgUrl: 'https://www.familyhomeplans.com/varnish1/image/fit=contain,quality=75/varnish-images/pdf/pinterest/images/56906.jpg?test=2',
+  year: 2015,
+  price: 1000000,
+  description: 'Lovely home for family'})]
+
+  /**@type {Job[]} */
+  jobs = [new Job({
+  company: 'Micron',
+  jobTitle: 'Engineer',
+  hours: 'full-time',
+  rate: '$30 per hour',
+  description: 'You are going to be engineering stuff'})]
 }
 
 export const ProxyState = new Proxy(new AppState(), {
