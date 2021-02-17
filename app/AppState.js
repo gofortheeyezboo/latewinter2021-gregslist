@@ -13,13 +13,25 @@ class AppState extends EventEmitter {
   cars = [new Car({make: "Jeep", model: "Wrangler", price: 20, imgUrl: 'http://images.thetruthaboutcars.com/2011/11/Wrangler-front-quarter.jpg', year: 2012, description: "Its nice", miles: 75000}), new Car({make: "Jeep", model: "Rango", price: 1500, imgUrl: 'http://images.thetruthaboutcars.com/2011/11/Wrangler-front-quarter.jpg', year: 2012, description: "Its very nice", miles: 5000})]
 
   /**@type {House[]} */
-  houses = [new House({bedrooms: 4,
+  houses = [new House({
+  bedrooms: 4,
   bathrooms: 2,
   levels: 2,
   imgUrl: 'https://www.familyhomeplans.com/varnish1/image/fit=contain,quality=75/varnish-images/pdf/pinterest/images/56906.jpg?test=2',
   year: 2015,
   price: 1000000,
-  description: 'Lovely home for family'})]
+  description: 'Lovely home for family'}), new House(
+    {
+      bedrooms: 5,
+  bathrooms: 3,
+  levels: 2,
+  imgUrl: 'https://i2.wp.com/www.literallydarling.com/wp-content/uploads/2016/06/one-company-is-bringing-your-hobbit-dreams-to-life-the-original-shire-in-matamata-new-z-534986.jpg?fit=1280%2C720&ssl=1',
+  year: 5,
+  price: 1000000000,
+  description: 'It is a Hobbit House'
+
+    }
+  )]
 
   /**@type {Job[]} */
   jobs = [new Job({
