@@ -1,17 +1,30 @@
 import { ProxyState } from "../AppState.js";
-import Jobs from "../Models/Jobs.js";
+import Jobs from "../Models/Jobs.js"
+import { api } from "./AxiosService.js";
 
 class JobsService{
 
  
   constructor(){
+    this.getJobs()
+  }
+  async getJobs() {
+    try {
+      const res = await api.get('jobs')
+      console.log(res);
+      ProxyState.jobs = res.data.map(rawJob => new Jobs(rawJob))
+    } catch (error) {
+      console.error(error)
+    }
   }
 
-  createJob(rawJob) {
-   let newJob = new Jobs(rawJob)
-   ProxyState.jobs = [...ProxyState.jobs, newJob]
-
-
+  async createJob(rawJob) {
+    try {
+      const res = await api.post('jobs', rawJob)
+      ProxyState.jobs = [ ...ProxyState.jobs, new Jobs(res.data)]
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   apply(id) {
@@ -21,11 +34,13 @@ class JobsService{
     ProxyState.jobs = temp
   }
 
-  deleteJob(id) {
-    let temp = ProxyState.jobs
-    let jobIndex = temp.findIndex(j =>  j.id == id)
-    temp.splice(jobIndex, 1)
-    ProxyState.jobs = temp
+  async deleteJob(id) {
+    try {
+      const res = await api.delete(`jobs/${id}`)
+      this.getJobs()
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   unHide(){

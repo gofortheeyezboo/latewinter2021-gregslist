@@ -1,31 +1,52 @@
 import { ProxyState } from "../AppState.js";
 import House from "../Models/House.js";
+import { api } from "./AxiosService.js";
 
 class HouseService{
 
  
   constructor(){
+    this.getHouses()
+    
+  }
+  async getHouses() {
+    try {
+      const res = await api.get('houses')
+      console.log(res);
+      ProxyState.houses = res.data.map(rawHouse => new House(rawHouse))
+    } catch (error) {
+      console.error(error)
+    }
   }
 
-  createHouse(rawHouse) {
-   let newHouse = new House(rawHouse)
-   ProxyState.houses = [...ProxyState.houses, newHouse]
-
-
+  async createHouse(rawHouse) {
+    try {
+      const res = await api.post('houses', rawHouse)
+      ProxyState.houses = [ ...ProxyState.houses, new House(res.data)]
+    } catch (error) {
+      console.error(error)
+    }
   }
 
-  bid(id) {
-    let temp = ProxyState.houses
-    let house = temp.find(h=> h.id === id)
-    house.price += 1000
-    ProxyState.houses = temp
+  async bid(id) {
+    let house = ProxyState.houses.find(h=> h.id === id)
+    house.price += 100
+    try {
+      const res = await api.put('houses/' + id, house)
+      console.log(res.data)
+      ProxyState.houses = ProxyState.houses
+    } catch (error) {
+      
+    }
   }
 
-  deleteHouse(id) {
-    let temp = ProxyState.houses
-    let houseIndex = temp.findIndex(h =>  h.id == id)
-    temp.splice(houseIndex, 1)
-    ProxyState.houses = temp
+  async deleteHouse(id) {
+    try {
+      const res = await api.delete(`houses/${id}`)
+      this.getHouses()
+    } catch (error) {
+      console.error(error)
+    }
   }
   unHide(){
     let carsElem = document.getElementById('cars-hide')
